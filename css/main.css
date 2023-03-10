@@ -1,0 +1,978 @@
+/* start variables */
+:root{
+  --main-color: #19c8fa ;
+  --transparent-color: rgb(15 116 143 / 70%);
+  --section-padding:100px;
+}
+/* end variables */
+/* start global rules */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+ul {
+    list-style: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Small */
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  /* Medium */
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  /* Large */
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+/* end global rules */
+/* start component */
+.heading-component {
+  text-align: center;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+.heading-component h2 {
+  font-weight: normal;
+  font-size: 40px;
+  margin-bottom: 80px;
+  position: relative;
+}
+.heading-component h2::after {
+  content: "";
+  position: absolute;
+  right: 50%; bottom: -30px;
+  transform: translateX(50%);
+  width: 120px;
+  height: 2px;
+  background-color: black;
+}
+.heading-component h2::before {
+  content: "";
+  position: absolute;
+  right: 50%; bottom: -39px;
+  transform: translateX(50%);
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 100%;
+  z-index: 2;
+}
+.heading-component p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #777;
+  line-height: 1.8;
+}
+/* end compnent */
+/* start header */
+header {
+position: absolute;
+width: 100%;
+z-index: 2;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+header .container::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 15px;
+  height: 1px;
+  width: calc(100% - 30px);
+  background-color: #a2a2a2;
+  z-index: -1;
+}
+header .logo img {
+  height: 40px;
+}
+header nav {
+  flex: 1 ;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+header nav .r-icon {
+  color: white;
+  font-size: 20px;
+}
+header nav .r-icon:hover + ul{
+  display: block;
+  position: absolute;
+  top: 100%; left: 0;
+  background-color: rgb(0 0 0 / 50%);
+  width: 100%;
+}
+header nav .r-icon:hover + ul a {
+  padding: 15px 20px;
+}
+@media (min-width:767px){
+  header nav .r-icon {
+    display: none;
+  }
+}
+header ul {
+  display: flex;
+}
+@media (max-width:768px) {
+  header ul {
+    display:none
+  }
+}
+header ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  padding: 40px 10px ;
+  transition: 0.3s;
+  position: relative;
+  /* without the previous property the border made with after is gonna be pushed down on hover because of the border height on hover */
+}
+header ul li .active {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+header ul li a:hover {
+  color: var(--main-color, blue);
+  border-bottom: 1px solid var(--main-color);
+}
+header nav .form {
+  margin-left: 50px;
+  padding: 39px 0;
+  position: relative;
+}
+header nav .form::after {
+  content: "";
+    position: absolute;
+    left: -20px;
+    bottom: 32px;
+    height: 30%;
+    width: 1px;
+    background-color: white;
+}
+header nav .form i {
+  color: white;
+  font-size: 18px;
+}
+/* end header */
+/* start landing */
+.landing {
+  min-height: 100vh;
+  background-color: #777; /* this is a fall back property incase the background image is unavailabe */
+  background-image: url(../images/owl-Image.jpg);
+  background-size: cover;
+  position: relative;
+}
+.landing .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 60%);
+}
+.landing .text {
+  width: 50%;
+  padding: 45px;
+  background-color: var(--transparent-color);
+  color: white;
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* I did the dificult way with one div instead of two and the result has a slight change. */
+}
+@media (max-width:767px){
+  .landing .text {
+    width: 100%;
+    display: block;
+  }
+}
+.landing .text h2 {
+  font-weight: 400;
+    font-size: 30px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.landing .text p {
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 400px;
+}
+@media (max-width:767px){
+  .landing .text p {
+    max-width: none;
+  }
+}
+.landing .text + i  {
+  position: absolute;
+  top: 50%; right: 25px;
+  transform: translateY(-50%);
+  color: white;
+}
+.landing .text + i + i {
+  position: absolute;
+  top: 50%; left: 25px;
+  transform: translateY(-50%);
+  color: white;
+}
+@media (max-width:767px){
+  .landing i {
+    display: none;
+  }
+}
+.landing ul {
+  display: flex;
+  width: 100px;
+  justify-content: space-evenly;
+  position: absolute;
+  left: 50%; bottom: 30px;
+  transform: translateX(-50%);
+}
+.landing ul li {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 100%;
+}
+.landing ul li.active {
+  background-color: var(--main-color);
+}
+/* start landing */
+/* start services */
+.services .services-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.services .serv {
+  width: 47%;
+  margin-bottom: 50px;
+  display: flex;
+}
+@media (max-width:992px) {
+  .services .serv {
+    width: 100%;
+  }
+}
+@media (max-width:767px) {
+  .services .serv {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.services .serv i {
+  flex-basis: 100px;
+}
+@media (max-width:767px){
+  .services .serv i {
+    flex-basis: 80px;
+  }
+}
+.services .serv .text {
+  flex: 1;
+}
+.services .serv .text h3 {
+  color: var(--main-color);
+  margin-bottom: 30px;
+}
+.services .serv .text p {
+  line-height: 1.8;
+  color: #777;
+}
+/* end services */
+/* start design */
+.design {
+  margin-top: 50px;
+  height: 600px;
+  background-image: url(../images/design-features.jpg);
+  background-size: cover;
+  position: relative;
+  z-index: -5;
+  overflow: hidden;
+}
+.design .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 60%);
+  position: absolute;
+  z-index: -4;
+}
+.design .main-content {
+  width: 50%;
+  padding: 50px;
+  color: white;
+  background-color: var(--transparent-color);
+  position: absolute;
+  top: 50%; right: 0;
+  transform: translateY(-50%);
+}
+.main-content h3 {
+  font-weight: normal;
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+.main-content div {
+  margin-bottom: 30px;
+}
+.main-content i {
+  margin-right: 15px;
+}
+.design .image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.design img {
+  position: relative;
+  bottom: -200px;
+}
+@media (max-width:767px) {
+  .design .image {
+    display:  none;
+  }
+  .design .main-content {
+    width: 100%;
+  }
+}
+/* end design */
+/* start portfolio */
+.portfolio {
+  padding-bottom: var(--section-padding);
+}
+.portfolio ul {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 50px;
+}
+.portfolio ul li {
+  padding: 10px;
+}
+.portfolio ul li.active {
+  background-color: var(--main-color);
+  color: white;
+}
+.portfolio .images-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.portfolio .images-container .image {
+  overflow: hidden;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .portfolio .images-container .image {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .portfolio .images-container .image {
+    width: 25%;
+  }
+}
+.portfolio .images-container img {
+  width: 100%;
+  transition: .3s;
+}
+.portfolio .images-container .image:hover img {
+  transform: scale(110%) rotate(3deg);
+}
+.portfolio .images-container .card {
+  position: absolute;
+  padding: 20px;
+  background-color: white;
+  width: 100%;
+}
+.portfolio .images-container .card p:last-child {
+  padding-top: 10px;
+  color:  var(--main-color);
+}
+.portfolio .images-container .image:hover .card {
+  transform: translateY(-99%);
+  transition-duration: 0.2s;
+  transition-delay: 0.1s;
+}
+.portfolio a {
+  display: block;
+  width: fit-content;
+  background-color: var(--main-color);
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  margin: 30px auto 0;
+}
+/* end portfolio */
+/* start video */
+.video {
+  position: relative;
+}
+.video video {
+  width: 100%;
+}
+.video::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 40%);
+}
+.video div {
+  width: 100%;
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--transparent-color);
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+.video div > * {
+  margin: 10px;
+}
+.video div h3 {
+  font-weight: normal;
+  font-size: 25px;
+}
+.video button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+}
+/* end video */
+/* start about */
+.about {
+ overflow: hidden;
+ position: relative;
+ text-align: center; /* this works with images as well */
+}
+.about img {
+position: relative;
+bottom: -120px;
+margin-top: -120px; /* interesting to learn */
+max-width: 100%;
+}
+@media (max-width:767px) {
+  .about img {
+    bottom: -60px;
+    margin-top: -60px;
+    }
+}
+/* end about */
+/* start stats */
+.stats {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  background-image: url(../images/stats.png);
+  background-size: cover;
+  position: relative;
+  text-align: center;
+  z-index: -3;
+}
+.stats::after {
+  content: "";
+  position: absolute;
+  left: 0;top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 70%);
+  z-index: -2;
+}
+.stats .main {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--transparent-color);
+  color: white;
+}
+.stats .main .box {
+  width: 100%;
+}
+@media (min-width:768px){
+  .stats .main .box {
+    width: 50%;
+  }
+}
+@media (min-width:992px){
+  .stats .main .box {
+    width: 25%;
+  }
+}
+.stats .main .box i {
+  border: 1px solid black;
+  border-radius: 100%;
+  padding: 10px;
+  background-color: black;
+  margin-top: 50px;
+}
+.stats .main .box h1 {
+  font-size: 50px;
+}
+.stats .main .box p {
+  margin-bottom: 50px;
+  font-size: 14px;
+}
+/* end stats */
+/* start our-skills */
+.our-skills {
+  padding-top: var(--section-padding) ;
+  padding-bottom: var(--section-padding) ;
+}
+.our-skills .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 40px;
+}
+.our-skills .text {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.our-skills .text h3 {
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.our-skills .text p {
+  color: #777;
+  line-height: 2;
+}
+.our-skills .people .person {
+  display: flex;
+  margin: 30px;
+}
+@media (max-width:767px) {
+  .our-skills .people .person {
+    display: block;
+    text-align: center;
+  }
+}
+.our-skills .people .person .image {
+  display: flex;
+  justify-content: center;
+}
+.our-skills .people .person .image img {
+  width: 100px;
+  border: 1px solid transparent;
+  border-radius: 100%;
+  align-self: center;
+}
+.our-skills .people .person div:not(.image) {
+  margin-left: 40px;
+  border-bottom: 1px solid #ccc;
+  line-height: 1.8;
+}
+.our-skills .people .person div p {
+  color: #777;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+.our-skills .dots {
+  display: flex;
+  justify-content: center;
+}
+.our-skills .dots span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  margin: 5px
+}
+.our-skills .dots .active {
+  background-color: var(--main-color);
+  border: transparent;
+}
+.our-skills .char {
+  margin-bottom: 40px;
+}
+.our-skills .char div {
+  position: relative;
+}
+.our-skills .char:first-child div {
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+  background-image: linear-gradient(
+    to right, 
+    #19c8fa 90%,
+    #ccc 90%
+  );
+}
+.our-skills .char div::after {
+  content: "";
+  position: absolute;
+  left: 90%; top: -11px;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-top: 9px solid black;
+}
+.our-skills .char div::before {
+  content: "90%";
+  position: absolute;
+  left: 90%; top: -41px;
+  transform: translateX(-50%);
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10%;
+}
+.our-skills .char:nth-child(2) div {
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+  background-image: linear-gradient(
+    to right, 
+    #19c8fa 85%,
+    #ccc 85%
+  );
+}
+.our-skills .char:nth-child(2) div::after {
+  left: 85%;
+}
+.our-skills .char:nth-child(2) div::before {
+  content: "85%";
+  left: 85%;
+}
+.our-skills .char:nth-child(3) div {
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+  background-image: linear-gradient(
+    to right, 
+    #19c8fa 80%,
+    #ccc 80%
+  );
+}
+.our-skills .char:nth-child(3) div::after {
+  left: 80%;
+}
+.our-skills .char:nth-child(3) div::before {
+  content: "80%";
+  left: 80%;
+}
+.our-skills .char:last-child div {
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+  background-image: linear-gradient(
+    to right, 
+    #19c8fa 90%,
+    #ccc 90%
+  );
+}
+/* check the videos about this section because osama did somethings differently and some of the differences are important.
+for example he invoked the value of the content of the before pseudo element by writing an attribute function that invoked
+the value of the html attribute "data-progress" */
+/* start our-skills */
+/* start quote */
+.quote {
+  background-image: url(../images/quote.jpg);
+  background-size: cover;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  position: relative;
+  z-index: -3;
+}
+.quote::after {
+  content: "";
+  position: absolute;
+  left: 0;top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 75%);
+  z-index: -2;
+}
+.quote p {
+  font-size: 16px;
+  margin-top: 20px;
+}
+/* end quote */
+/* start pricing */
+.pricing-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+.pricing-content .cont {
+  border-top: 1px solid var(--main-color);
+}
+.pricing-content .cont .top {
+  padding: 40px;
+  border-bottom: 1px solid var(--main-color);
+}
+.pricing-content .cont .top h3 {
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.pricing-content .cont .top div {
+  font-weight: bold;
+  font-size: 60px;
+  position: relative;
+  width: 180px;
+  margin: 0 auto;
+}
+.pricing-content .cont .top div::before {
+  content: "$";
+  position: absolute;
+  top: -5px;
+  left: 25px;
+  font-size: 25px;
+  font-weight: normal;
+}
+.pricing-content .cont .top div::after {
+  content: "/Mo";
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  font-size: 20px;
+}
+.pricing-content .cont .mid {
+  width: 140px;
+  margin: 0 auto;
+}
+.pricing-content .cont .mid p {
+  padding: 20px 0;
+}
+.pricing-content .cont .mid p:not(:last-child) {
+  border-bottom: 1px solid var(--main-color);
+}
+.pricing-content .cont .bot {
+  border-top: 1px solid var(--main-color);
+}
+.pricing-content .cont .bot a {
+  text-decoration: none;
+  border: 1px solid var(--main-color);
+  padding: 20px;
+  display: inline-block;
+  margin-top: 30px;
+}
+.pricing .extra-content {
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: var(--section-padding);
+}
+.pricing .extra-content p {
+  font-size: 20px;
+}
+.pricing .extra-content a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: var(--main-color);
+  padding: 15px 30px;
+  margin-top: 20px;
+}
+/* end pricing */
+/* start subscribe */
+.subscribe {
+  background-image: url(../images/subscribe.jpg);
+  background-size: cover;
+  color: white;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  position: relative;
+}
+.subscribe::after {
+  content: "";
+  position: absolute;
+  left: 0;top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 60%);
+}
+.subscribe .container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.subscribe form {
+  display: flex;
+  border: 1px solid white;
+  width: 500px;
+  max-width: 100%; /* for phone */
+  min-width: 184px;
+}
+.subscribe form i {
+  padding: 10px;
+  margin: 20px 10px;
+  width: 40px;
+}
+.subscribe input[type="email"] {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 16px;
+  caret-color: var(--main-color);
+  width: calc(100% - 180px);
+  /* giving flexible width for this input is necessary for responsivity. check with and without */
+}
+.subscribe input[type="email"]:focus {
+  outline: none;
+}
+.subscribe input::placeholder {
+  color: white;
+}
+.subscribe input[value="subscribe"] {
+  background-color: var(--main-color);
+  text-transform: uppercase;
+  font-size: 16px;
+  border: none;
+  color: white;
+  padding: 20px;
+  width: 120px;
+} 
+.subscribe p {
+  margin: 20px 50px;
+  font-size: 16px;
+  line-height: 2;
+}
+@media (max-width:992px) {
+  .subscribe .container {
+    flex-direction: column;
+  }
+  .subscribe p {
+    margin: 20px 0;
+  }
+}
+/* end subscribe */
+/* start contacts */
+.contacts .content {
+  display: flex;
+  padding-bottom: var(--section-padding);
+}
+.contacts .content form {
+  width: 70%;
+}
+.contacts .content form > *:not(:last-child) {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+.contacts .content form > *:not(:last-child):focus {
+  outline: none;
+}
+.contacts .content form input[type="submit"] {
+  display: block;
+  margin-left: auto;
+  padding: 15px;
+  border: none;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  /* it seems like the submet input have a weird nature. as I did not need to specify a width in order for margin-left:auto to work */
+}
+.contacts .content .text {
+  margin-left: 50px;
+}
+.contacts .content .text div:first-child {
+  margin-bottom: 40px;
+}
+.contacts .content .text h4 {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+.contacts .content .text p,
+.contacts .content .text address {
+  color: #777;
+  line-height: 2;
+}
+@media (max-width:767px) {
+  .contacts .content {
+    flex-direction: column-reverse;
+    /* osama did not use column-revers. instead he used column and the order prperty */
+  }
+  .contacts .content form {
+    width: 100%;
+  }
+  .contacts .content .text {
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 40px;
+  }
+  .contacts .content .text div:first-child {
+    margin-bottom: 20px;
+  }
+}
+/* start contacts */
+/* start footer */
+footer {
+  background-image: url(../images/subscribe.jpg);
+  background-size: cover;
+  color: white;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  position: relative;
+}
+footer::after {
+  content: "";
+  position: absolute;
+  left: 0;top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 70%);
+}
+footer .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+footer p:first-of-type {
+  font-size: 20px;
+  padding: 20px;
+  width: fit-content;
+  margin: 20px auto;
+  border-bottom: 1px solid;
+}
+footer ul {
+  display: flex;
+  justify-content: center;
+  padding-right: 30px;
+}
+footer ul li {
+  margin-left: 30px;
+}
+footer p:last-of-type {
+  margin-top: 60px;
+}
+footer p:last-of-type span {
+  color:  var(--main-color);
+  font-weight: bold;
+}
+/* end footer */
